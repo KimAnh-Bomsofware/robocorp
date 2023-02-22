@@ -17,6 +17,7 @@ Library             Screenshot
 Library             RPA.Robocorp.Vault
 Library             RPA.Browser.Selenium    auto_close=${FALSE}
 Library             RPA.JSON
+#Library				RPA.Robocloud.Secrets
 
 
 *** Variables ***
@@ -32,6 +33,7 @@ ${alert_danger}     //div[contains(@class, 'alert-danger')]
 
 *** Tasks ***
 Order robots from RobotSpareBin Industries Inc
+    Read some data from a vault
     Open the robot order website
     ${orders}=    Get orders
     FOR    ${row}    IN    @{orders}
@@ -136,4 +138,4 @@ Go to order another robot
 
 Read some data from a vault
     ${secret}=    Get Secret    credentials
-    Log    Name is ${secret}[name]    console=${TRUE}
+    Log    Name is ${secret}[name]    html=${TRUE}    console=${TRUE}
